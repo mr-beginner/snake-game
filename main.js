@@ -79,15 +79,28 @@ function setDifficulty(level) {
 
 function gameLoop() {
   if (gameOver) {
+
+    ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     ctx.fillStyle = "white";
     ctx.font ="40px sans-serif";
     ctx.textAlign = "center";
 
     ctx.fillText(
-      "Game Over",
+      "GAME OVER",
        canvas.width / 2,
-       canvas.height / 2
+       canvas.height / 2 - 20
       );
+
+      ctx.font = "24px sans-serif";
+
+      ctx.fillText(
+        "Score :" + score,
+        canvas.width / 2,
+        canvas.height / 2 +25
+      )
+
     return;
   }
 
@@ -112,7 +125,7 @@ function moveSnake() {
 
   if (head.x === food.x && head.y === food.y) {
     score++;
-    scoreText.textContent = "Score: " +score;
+    
     placeFood();
   } else {
     snake.pop();
@@ -248,8 +261,6 @@ function resetGame() {
   dy = 0;
   score = 0;
   gameOver = false;
-
-  scoreText.textContent = "Score: 0";
   
 
   gameLoop();
