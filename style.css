@@ -20,7 +20,8 @@ button {
 }
 
 #controls {
-  margin-top: 8px;
+  text-align: center;
+  margin-top: -20px;
 }
 
 #controls button {
