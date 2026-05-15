@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,12 +22,12 @@
     <button id="restart" onclick="resetGame()">Restart</button>
 
     <div id="controls">
-      <button onclick="setDirection(0, -1)">UP</button>
+      <button onclick="setDirection(0, -1)">上</button>
       <br>
-      <button onclick="setDirection(-1, 0)">LEFT</button>
-      <button onclick="setDirection(1, 0)">RIGHT</button>
+      <button onclick="setDirection(-1, 0)">左</button>
+      <button onclick="setDirection(1, 0)">右</button>
       <br>
-      <button onclick="setDirection(0, 1)">DOWN</button>
+      <button onclick="setDirection(0, 1)">下</button>
     </div>
 
     <script src="main.js"></script>

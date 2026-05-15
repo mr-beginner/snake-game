@@ -1,16 +1,23 @@
 const canvas = document.getElementById("game");
-if (window.innerWidth < 600) {
-  canvas.width = 420;
-  canvas.height = 700;
-} else {
-  canvas.width = 500;
-  canvas.height = 500;
-}
-const ctx = canvas.getContext("2d");
-const scoreText = document.getElementById("score");
 
 const gridSize = 20;
-const tileCount = canvas.width / gridSize;
+
+let tileCountX;
+let tileCountY;
+
+if (window.innerWidth < 600) {
+  tileCountX = 18;
+  tileCountY = 28;
+} else {
+  tileCountX = 25;
+  tileCountY = 25;
+}
+
+canvas.width = tileCountX * gridSize;
+canvas.height = tileCountY * gridSize;
+
+const ctx = canvas.getContext("2d")
+const scoreText = document.getElementById("score");
 
 let snake = [
     { x: 10, y: 10 }
@@ -73,8 +80,14 @@ function setDifficulty(level) {
 function gameLoop() {
   if (gameOver) {
     ctx.fillStyle = "white";
-    ctx.font ="30px sans-serif";
-    ctx.fillText("Game Over" , 120, 200);
+    ctx.font ="40px sans-serif";
+    ctx.textAlign = "center";
+
+    ctx.fillText(
+      "Game Over",
+       canvas.width / 2,
+       canvas.height / 2
+      );
     return;
   }
 
@@ -197,8 +210,8 @@ function drawApple() {
 ////////////////////////////////////////////////////
 
 function placeFood() {
-  food.x = Math.floor(Math.random() * tileCount);
-  food.y = Math.floor(Math.random() * tileCount);
+  food.x = Math.floor(Math.random() * tileCountX);
+  food.y = Math.floor(Math.random() * tileCountY);
 }
 
 function checkCollision() {
@@ -206,9 +219,9 @@ function checkCollision() {
 
   if (
     head.x < 0 ||
-    head.x >= tileCount ||
+    head.x >= tileCountX ||
     head.y < 0 ||
-    head.y >= tileCount
+    head.y >= tileCountY
   ) {
     return true;
   }
