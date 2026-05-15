@@ -19,6 +19,7 @@ let dy = 0;
 
 let score = 0;
 let gameOver = false;
+let speed =220;
 
 document.addEventListener("keydown", changeDirection);
 
@@ -42,6 +43,26 @@ function changeDirection(event) {
   }
 }
 
+function setDirection(newDx, newDy) {
+  if (newDx === -dx && newDy === -dy) {
+    return;
+  }
+
+  dx = newDx;
+  dy = newDy;
+}
+
+function setDifficulty(level) {
+  if (level === "easy") {
+    speed = 300;
+  } else if (level === "normal") {
+    speed = 220;
+  } else if (level === "hard") {
+    speed = 140;
+  }
+  resetGame();
+}
+
 function gameLoop() {
   if (gameOver) {
     ctx.fillStyle = "white";
@@ -58,7 +79,7 @@ function gameLoop() {
 
   drawGame();
 
-  setTimeout(gameLoop, 220);
+  setTimeout(gameLoop, speed);
 }
 
 function moveSnake() {
@@ -77,29 +98,96 @@ function moveSnake() {
     snake.pop();
   }
 }
-
+/////////////////////////////////////////
 function drawGame() {
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "lime";
-  for (let part of snake) {
-    ctx.fillRect(
-      part.x * gridSize,
-      part.y * gridSize,
-      gridSize - 2,
-      gridSize -2
-    );
-  }
-
-  ctx.fillStyle = "red";
-  ctx.fillRect(
-    food.x * gridSize,
-    food.y * gridSize,
-    gridSize - 2,
-    gridSize -2
-  );
+  drawSnake();
+  drawApple();
 }
+
+function drawSnake() {
+  for (let i = snake.length - 1; i >= 0; i--) {
+    const part = snake[i];
+
+    const centerX = part.x * gridSize + gridSize / 2;
+    const centerY = part.y * gridSize + gridSize / 2;
+
+    if (i === 0) {
+      ctx.fillStyle = "#1e7d3b";
+    } else {
+      ctx.fillStyle = "#58c765";
+    }
+
+    ctx.beginPath();
+    ctx.arc(
+      centerX,
+      centerY,
+      gridSize / 2 -1,
+      0,
+      Math.PI * 2
+    );
+    ctx.fill();
+
+    if (i === 0) {
+      drawSnakeFace(part);
+    }
+  }
+}
+
+function drawSnakeFace(head) {
+  const baseX = head.x * gridSize;
+  const baseY = head.y * gridSize;
+
+  ctx.fillStyle = "white";
+
+  ctx.beginPath();
+  ctx.arc(baseX + 6, baseY + 7, 3, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(baseX + 14, baseY + 7, 3, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = "black";
+
+  ctx.beginPath();
+  ctx.arc(baseX + 6, baseY + 7, 1.5, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(baseX + 14, baseY + 7, 1.5, 0, Math.PI * 2);
+  ctx.fill();
+
+  //赤い口
+  ctx.fillStyle = "red";
+  ctx.fillRect(baseX + 8, baseY + 13, 4, 5);
+}
+
+function drawApple() {
+  const centerX = food.x * gridSize + gridSize / 2;
+  const centerY = food.y * gridSize + gridSize / 2;
+
+  //りんご本体
+  ctx.fillStyle ="#e53935";
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, gridSize / 2 - 2, 0, Math.PI * 2);
+  ctx.fill();
+
+  //ツヤ
+  ctx.fillStyle = "#ff8a80";
+  ctx.beginPath();
+  ctx.arc(centerX - 3, centerY - 4, 2, 0, Math.PI * 2);
+  ctx.fill();
+
+  //葉っぱ
+  ctx.fillStyle = "#43a047";
+  ctx.fillRect(centerX +2, centerY - 12, 5, 5);
+}
+
+
+////////////////////////////////////////////////////
 
 function placeFood() {
   food.x = Math.floor(Math.random() * tileCount);
