@@ -21,7 +21,7 @@ button {
 
 #controls {
   text-align: center;
-  margin-top: -70px;
+  margin-top: -6px;
 }
 
 #controls button {
@@ -68,6 +68,10 @@ button {
 }
 
 @media (max-width: 600px) {
+
+  #controls {
+    margin-top: -2px;
+  }
   #controls button {
     width: 52px;
     height: 52px;
