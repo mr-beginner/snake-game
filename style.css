@@ -9,3 +9,27 @@ canvas {
     background: black;
     border: 2px solid white;
 }
+
+button {
+  font-size: 24px;
+  padding: 10px 18px;
+  margin: 5px;
+}
+
+#controls button {
+  width: 100px;
+  height: 100px;
+  font-size: 40px;
+}
+
+#difficulty {
+  margin-bottom: 10px;
+}
+
+#restart {
+  margin-bottom: 10px;
+}
+
+#controls {
+  margin-top: 10px;
+}
