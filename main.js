@@ -1,4 +1,11 @@
 const canvas = document.getElementById("game");
+if (window.innerWidth < 600) {
+  canvas.width = 320;
+  canvas.height = 320;
+} else {
+  canvas.width = 500;
+  canvas.height = 500;
+}
 const ctx = canvas.getContext("2d");
 const scoreText = document.getElementById("score");
 
