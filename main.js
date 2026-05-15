@@ -1,7 +1,7 @@
 const canvas = document.getElementById("game");
 if (window.innerWidth < 600) {
-  canvas.width = 320;
-  canvas.height = 320;
+  canvas.width = 420;
+  canvas.height = 700;
 } else {
   canvas.width = 500;
   canvas.height = 500;
