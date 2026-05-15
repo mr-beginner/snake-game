@@ -44,6 +44,24 @@ button {
   font-size: 18px;
 }
 
+#restart-container {
+  text-align: right;
+  margin-right: 20px;
+}
+
+#controls {
+  text-align: center;
+}
+
+#controls div {
+  margin: 6px 0;
+}
+
+#center-space {
+  display: inline-block;
+  width: 42px;
+}
+
 #diffculty{
   margin-bottom:6px;
 }

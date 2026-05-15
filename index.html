@@ -19,15 +19,24 @@
 
     <p id="score">Score: 0</p>
     
-    <button id="restart" onclick="resetGame()">Restart</button>
+    <div id="restart-container">
+       <button id="restart" onclick="resetGame()">Restart</button>
+    </div>
 
     <div id="controls">
-      <button onclick="setDirection(0, -1)">▲</button>
-      <br>
-      <button onclick="setDirection(-1, 0)">◀</button>
-      <button onclick="setDirection(1, 0)">▶</button>
-      <br>
-      <button onclick="setDirection(0, 1)">▼</button>
+      <div>
+        <button onclick="setDirection(0, -1)">▲</button>
+      </div>
+
+      <div>
+        <button onclick="setDirection(-1, 0)">◀</button>
+        <span id="center-space"></span>
+        <button onclick="setDirection(1, 0)">▶</button>
+      </div>
+      
+      <div>
+        <button onclick="setDirection(0, 1)">▼</button>
+      </div>
     </div>
 
     <script src="main.js"></script>
