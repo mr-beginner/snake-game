@@ -14,45 +14,49 @@ canvas {
 }
 
 button {
-  font-size: 24px;
-  padding: 10px 18px;
-  margin: 5px;
+  font-size: 20px;
+  padding: 8px 14px;
+  margin: 4px;
+}
+
+#controls {
+  margin-top: 8px;
 }
 
 #controls button {
   width: 42px;
   height: 42px;
-  font-size: 18px;
+  font-size: 28px;
   margin: 4px;
+
+  padding: 0;
+
+  text-align: center;
+  line-height: 42px;
+
+}
+
+#restart {
+  margin-top: 6px;
+  margin-bottom: 8px;
+
+  padding: 6px 12px;
+  font-size: 18px;
+}
+
+#diffculty{
+  margin-bottom:6px;
 }
 
 @media (max-width: 600px) {
-
   #controls button {
-    width: 70px;
-    height: 70px;
-    font-size: 24px;
-    margin: 6px;
+    width: 62px;
+    height: 62px;
+    font-size: 32px;
+    line-height: 62px;
   }
-}
 
-#difficulty {
-  margin-bottom: 10px;
-}
-
-#restart {
-  margin-bottom: 10px;
-}
-
-#controls {
-  margin-top: 10px;
-}
-
-#controls button {
-  margin: 12px;
-}
-
-#restart {
-  margin-top: 8px;
-  margin-bottom: 10px;
+  #restart {
+    font-size: 18px;
+  }
 }
