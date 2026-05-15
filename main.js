@@ -7,7 +7,7 @@ let tileCountY;
 
 if (window.innerWidth < 600) {
   tileCountX = 18;
-  tileCountY = 28;
+  tileCountY = 18;
 } else {
   tileCountX = 25;
   tileCountY = 25;
